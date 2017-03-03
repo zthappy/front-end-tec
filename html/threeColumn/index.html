@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>threeColumnLayout</title>
+	<style type="text/css">
+	html,body {
+		margin: 0;
+		padding: 0;
+	}
+	#container {
+		width: 100%;
+		border:1px solid #999;
+	}
+	#container * {
+		padding: 20px;
+		
+	}
+	#content {
+		background-color: #eee;
+		border:1px solid #999;
+	}
+	#left {
+		width: 200px;
+		float: left;
+		border:1px solid #999;
+	}
+	#left img {
+		display: inline-block;
+		height: 80px;
+		width: 80px;
+		border:1px solid #999;
+	}
+	#right {
+		width: 120px;
+		float: right;
+		border:1px solid #999;
+	}
+	#right img {
+		display: block;
+		width: 80px;
+		height: 80px;
+		border:1px solid #999;
+	}
+	#center {
+		border:1px solid #999;
+		width: calc(100% - 183px - 263px - 40px);
+		margin-left: 262px;
+	}
+	#clearboth {
+		clear:both;
+	}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="content">
+			<div id="right">
+				<img src="./images/logo.jpg" alt="">
+				<img src="./images/logo.jpg" alt="">
+				<img src="./images/logo.jpg" alt="">
+				<img src="./images/logo.jpg" alt="">
+			</div>
+			<div id="left">
+				<img src="./images/logo.jpg">
+				XXXX
+			</div>
+			<div id="center">
+				HBase 简介
+　　众所周知，在 SQL 方面处于顶级的有两个公司，一个是 Oracle，他们已经积累了大量的经验，另一个是谷歌，谷歌 F1 在2012年发布了一篇论文，个人认为它是全球最优秀的 SQL OLTP 数据库。
+　　1978年左右，数据库刚刚发展时出现了SQL RDBMS。2000年左右，国内开始流行互联网，互联网对 Oracle 数据库也产生较大的冲击。现在，传统的数据库大部分是集中在传统领域，互联网方面用得比较多的是 MySQL ，其次 HBase 等 NoSQL 也吸引了大量的用户。
+　　为什么会出现 NoSQL？最开始所有人都用 SQL Database，那时比较高端有 Oracle，开源的还有 MySQL、PostgreSQL。可是随着业务的迅速发展，数据库成为了瓶颈，于是促使了 NoSQL 的诞生，NoSQL 将 Scale 放在第一位。如果业务快速发展，扩容会成为亟待解决的首要问题。这时，大多数人会选择放弃事务一致性。什么是一致性？比如使用微信时，如果我加你为好友，这是一个双向关系，对应到数据库中至少是两个操作，第一是在好友列表里把你加进来，第二个是你的好友列表里把我加进去。如果这两个列表的数据库放在不同的机器上，就需要保证一致性。否则可能会出现我是你的好友，但你的好友中却找不到我的这种情况。但这中间可能会出现多种情况，比如我把你加为好友，然后修改数据的时候 Crush 掉了，这个时候传统方案是会引入一个消息队列，有的还需要做一些补偿，这些问题在 NoSQL 里处理起来相对麻烦。
+			</div>
+			<div id="clearboth">
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>
