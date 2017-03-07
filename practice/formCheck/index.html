@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>formCheck</title>
+	<style type="text/css">
+	* {
+		padding: 0;
+		margin: 0;
+	}
+	html,body {
+		height: 100%;
+		width: 100%;
+	}
+	#container {
+		position: absolute;
+		height: 200px;
+		width: 600px;
+		top: calc(50% - 100px);
+		left: calc(50% - 300px);
+	}
+	#container *{
+		margin: 10px;
+		font-family: Microsoft YaHei;
+		font-size: 20px;
+	}
+	input[type="button"] {
+		display: inline-block;
+		height: 30px;
+		width: 60px;
+		border-radius: 5px;
+		color: #fff;
+		background-color: #2F79BA;
+	}
+	input[type="text"]{
+		display: inline-block;
+		height: 30px;
+		border-radius: 4px;
+	}
+	#showone,#showtwo,#showthree {
+		font-size: 12px;
+		color: grey;
+		margin-left: 80px;
+	}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="one">
+			<label>名称</label> <input type="text" id="validation1"><input type="button" value="验证" id="validateone">
+			<div id="showone"></div>
+		</div>
+		<!-- 字数要求4-16位 -->
+		
+		<div id="two">
+			<label>名称</label> <input type="text" id="validation2"><input type="button" value="验证"  id="validatetwo">
+			<div id="showtwo"></div>
+		</div>
+
+		<div id="three">
+			<label>名称</label> <input type="text" id="validation3"><input type="button" value="验证"  id="validatethree">
+			<div id="showthree"></div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	(function(){
+		function $(id){
+			return document.getElementById(id);
+		}
+		function getValue(id){
+			return $(id).value;
+		}
+		function validateone(id){
+
+			if(getValue(id).length>16 || getValue(id).length<4 || getValue(id).length == 0){
+				$("showone").innerHTML = "必填，长度为4-16个字符"
+			}
+			else{
+				$("showone").innerHTML = ""
+			}
+		}
+		function validatetwo(id){
+			if(getValue(id).length == 0){
+				$("showtwo").innerHTML = "名称不能为空"
+			}
+			else{
+				$("showtwo").innerHTML = ""
+			}
+		}
+		function validatethree(id){
+			var reg = /^\d*$/;
+			if(reg.test(getValue(id))){
+				$("showthree").innerHTML = "格式正确"
+			}
+			else {
+				$("showthree").innerHTML = "格式不正确"
+			}
+
+		}
+		$("validateone").onclick = function() {
+			validateone("validation1");
+		}
+		$("validatetwo").onclick = function() {
+			validatetwo("validation2");
+		}
+		$("validatethree").onclick = function() {
+			validatethree("validation3");
+		}
+	})()
+</script>
+</html>
