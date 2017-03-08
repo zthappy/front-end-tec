@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>movingBlock</title>
+	<style type="text/css">
+	table {
+		border-collapse:collapse; 
+		border:1px solid #ddd;
+	}
+	table td {
+		width: 20px;
+		height: 20px;
+		border: 1px solid #ddd;
+	}
+	#movingBlock {
+		position: absolute;
+		background-color: red;
+		height: 23px;
+		width: 23px;
+	}
+	#container {
+		position: relative;
+	}
+	#blueDir {
+		position: absolute;
+		background-color: blue;
+	}
+	/* 上 */
+	.blueDir1{
+		width:23px;
+		height:10px;
+		top:0;
+		left:0;
+	}
+	/* 右 */
+	.blueDir2 {
+		width:10px;
+		height:23px;
+		top:0;
+		right:0;
+	}
+	.blueDir3 {
+		width:23px;
+		height:10px;
+		bottom:0;
+		left:0;
+	}
+	.blueDir4 {
+		width:10px;
+		height:23px;
+		top:0;
+		left:0;
+	}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="movingBlock">
+			<div id="blueDir"></div>
+		</div>
+	</div>
+	<div id="ins">
+		<input type="button" value="Go" id="go">
+		<input type="button" value="Left" id="left">
+		<input type="button" value="Right" id="right">
+		<input type="button" value="Back" id="back">
+	</div>
+</body>
+<script type="text/javascript">
+	(function(){
+		// 根据id号获取元素
+		function $(id){
+			return document.getElementById(id);
+		}
+		// 初始化表格
+		function initTable(){
+			var con = $("container");
+			var table = document.createElement("table");
+			table.id = "table"
+			con.appendChild(table);
+			for(var i = 0; i<10;i++){
+				var tr = document.createElement("tr");
+				for(var j =0; j<10;j++){
+					var td = document.createElement("td");
+					tr.appendChild(td);
+				}
+				table.appendChild(tr);
+			}
+		}
+		function init(){
+			var i = Math.floor(Math.random()*10); // 横坐标
+			var j = Math.floor(Math.random()*10); // 纵坐标
+			var dir = Math.floor(Math.random()*4);
+			$("movingBlock").style.top = j*23+"px";
+			$("movingBlock").style.left = i*23+"px";
+			if(dir == 0){
+				$("blueDir").className = "blueDir1";
+			}
+			else if(dir == 1){
+				$("blueDir").className = "blueDir2";
+			}
+			else if(dir == 2){
+				$("blueDir").className = "blueDir3";
+			}
+			else if(dir == 3){
+				$("blueDir").className = "blueDir4";
+			}
+			return info={i:i,j:j,dir:dir};
+		}
+		function initBlock(table,i,j,dir){
+			$("movingBlock").style.top = j*23+"px";
+			$("movingBlock").style.left = i*23+"px";
+			return info = {i:i,j:j,dir:dir};
+		}
+		// 前进
+		function go(i,j,dir) {
+			if(dir == 0 && (j-1) > -1){
+				j = j-1;
+			}
+			else if(dir == 1 &&　(i+1) < 10){
+				i= i+1;
+			}
+			else if(dir == 2 && (j+1) < 10){
+				j = j+1;
+			}
+			else if(dir == 3 && (i-1) > -1)
+			{
+				i = i-1;
+			}
+			else {
+				alert("error")
+			}
+			initBlock($("table"),i,j,dir);
+			return info = {i:i,j:j,dir:dir};
+		}
+		// 掉头
+		function back(i,j,dir){
+			if(dir == 0){
+				dir = 2;
+				$("blueDir").className = "blueDir3";
+			}
+			else if(dir == 1){
+				dir =3;
+				$("blueDir").className = "blueDir4";
+			}
+			else if(dir == 2){
+				dir = 0;
+				$("blueDir").className = "blueDir1";
+			}
+			else if(dir == 3){
+				dir = 1;
+				$("blueDir").className = "blueDir2";
+			}
+			return info= {i:i,j:j,dir:dir}
+		}
+		function left(i,j,dir) {
+			if(dir == 0){
+				dir = 3;
+				$("blueDir").className = "blueDir4";
+			}
+			else if(dir == 1){
+				dir =0;
+				$("blueDir").className = "blueDir1";
+			}
+			else if(dir == 2){
+				dir = 1;
+				$("blueDir").className = "blueDir2";
+			}
+			else if(dir == 3){
+				dir = 2;
+				$("blueDir").className = "blueDir3";
+			}
+			return info= {i:i,j:j,dir:dir}
+		}
+		function right(i,j,dir) {
+			if(dir == 0){
+				dir = 1;
+				$("blueDir").className = "blueDir2";
+			}
+			else if(dir == 1){
+				dir =2;
+				$("blueDir").className = "blueDir3";
+			}
+			else if(dir == 2){
+				dir = 3;
+				$("blueDir").className = "blueDir4";
+			}
+			else if(dir == 3){
+				dir = 0;
+				$("blueDir").className = "blueDir1";
+			}
+			return info= {i:i,j:j,dir:dir}
+		}
+		window.onload = function(){
+			init();
+			initTable();
+			$("go").onclick=function(){
+				go(info.i,info.j,info.dir);
+			}
+			$("back").onclick = function()
+			{
+				back(info.i,info.j,info.dir);
+			}
+			$("left").onclick = function(){
+				left(info.i,info.j,info.dir)
+			}
+			$("right").onclick = function(){
+				right(info.i,info.j,info.dir)
+			}
+		}
+	})()
+</script>
+</html>
