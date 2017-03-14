@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>popup</title>
+</head>
+<body>
+	<div id="container">
+		<p>abcdefg</p>
+	</div>
+	<script type="text/javascript">
+	(function(window,undefined){
+		function ClassA(id){
+			var self = document.getElementById(id);
+			this.add = function(){
+				self.innerHTML = "1111";
+			}
+		}
+		window.onload = function(){
+			var a = new ClassA("container");
+			a.add();
+		}
+	})(window)
+	</script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tagCloud</title>
+	<style type="text/css">
+	#container {
+		position: relative;
+		width: 800px;
+		height: 800px;
+	}
+	.tag{
+		position: absolute;
+		text-decoration: none;
+	}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<a href="" class="tag">Adfh</a>
+		<a href="" class="tag">Btrhrd</a>
+		<a href="" class="tag">eryerC</a>
+		<a href="" class="tag">eryrD</a>
+		<a href="" class="tag">shE</a>
+		<a href="" class="tag">Ferye</a>
+		<a href="" class="tag">dhG</a>
+		<a href="" class="tag">sdfG</a>
+		<a href="" class="tag">sdfH</a>
+		<a href="" class="tag">dhIU</a>
+		<a href="" class="tag">dhF</a>
+		<a href="" class="tag">sdhFg</a>
+		<a href="" class="tag">fdh</a>
+		<a href="" class="tag">dhuy</a>
+		<a href="" class="tag">dher</a>
+		<a href="" class="tag">6dh</a>
+		<a href="" class="tag">fdhf</a>
+		<a href="" class="tag">gdh</a>
+		<a href="" class="tag">jdh</a>
+		<a href="" class="tag">dy</a>
+		<a href="" class="tag">sdfH</a>
+		<a href="" class="tag">dhIU</a>
+		<a href="" class="tag">dhF</a>
+		<a href="" class="tag">sdhFg</a>
+		<a href="" class="tag">fdh</a>
+		<a href="" class="tag">dhuy</a>
+		<a href="" class="tag">dher</a>
+		<a href="" class="tag">6dh</a>
+		<a href="" class="tag">fdhf</a>
+		<a href="" class="tag">gdh</a>
+		<a href="" class="tag">jdh</a>
+		<a href="" class="tag">dy</a>
+		<a href="" class="tag">sdfG</a>
+		<a href="" class="tag">sdfH</a>
+		<a href="" class="tag">dhIU</a>
+		<a href="" class="tag">dhF</a>
+		<a href="" class="tag">sdhFg</a>
+		<a href="" class="tag">fdh</a>
+		<a href="" class="tag">dhuy</a>
+		<a href="" class="tag">dher</a>
+		<a href="" class="tag">6dh</a>
+		<a href="" class="tag">fdhf</a>
+		<a href="" class="tag">gdh</a>
+		<a href="" class="tag">jdh</a>
+		<a href="" class="tag">dy</a>
+		<a href="" class="tag">sdfH</a>
+		<a href="" class="tag">dher</a>
+		<a href="" class="tag">6dh</a>
+		<a href="" class="tag">fdhf</a>
+		<a href="" class="tag">gdh</a>
+		<a href="" class="tag">jdh</a>
+		<a href="" class="tag">dy</a>
+		<a href="" class="tag">sdfH</a>
+		<a href="" class="tag">dhIU</a>
+		<a href="" class="tag">dhF</a>
+		<a href="" class="tag">sdhFg</a>
+		<a href="" class="tag">fdh</a>
+		<a href="" class="tag">dhuy</a>
+		<a href="" class="tag">dher</a>
+		<a href="" class="tag">6dh</a>
+		<a href="" class="tag">fdhf</a>
+		<a href="" class="tag">gdh</a>
+		<a href="" class="tag">jdh</a>
+		<a href="" class="tag">dy</a>
+		<a href="" class="tag">sdfG</a>
+		<a href="" class="tag">sdfH</a>
+		<a href="" class="tag">dher</a>
+		<a href="" class="tag">6dh</a>
+		<a href="" class="tag">fdhf</a>
+		<a href="" class="tag">gdh</a>
+		<a href="" class="tag">jdh</a>
+		<a href="" class="tag">dy</a>
+		<a href="" class="tag">sdfH</a>
+		<a href="" class="tag">dher</a>
+		<a href="" class="tag">6dh</a>
+		<a href="" class="tag">fdhf</a>
+		<a href="" class="tag">gdh</a>
+	</div>
+	<script type="text/javascript">
+	(function(){
+		function init() {
+			var radius = 300;// 半径
+			var tags = document.getElementsByClassName("tag");
+			for(var i = 0; i<tags.length; i++){
+				var angle1 = Math.acos((2*i+1)/tags.length-1);
+				var angle2 = angle1*Math.sqrt(tags.length*Math.PI);
+				var x = radius*Math.sin(angle1)*Math.cos(angle2);
+				var y = radius*Math.sin(angle1)*Math.sin(angle2);
+				var z = radius*Math.cos(angle1);
+				tags[i].style.left = x + 400 +"px";
+				tags[i].style.top = y + 400 +"px";
+				var a = (z+300)/600;
+				tags[i].style.opacity = (z+300)/600 + 0.5;
+				tags[i].style.fontSize = 30 * a +"px";
+				tags[i].style.color = "rgb("+parseInt(Math.random()*255)+","+parseInt(Math.random()*255)+","+parseInt(Math.random()*255)+")";
+			}
+		
+			//  θ = arccos( ((2*num)-1)/all - 1);
+			//  Φ = θ*sqrt(all * π);
+			
+		}
+		
+		var container = document.getElementById('container');
+		container.addEventListener("mousemove",function(e){
+			var x = e.clientX;
+			var y = e.clientY;
+			var angleX = Math.atan((y-200)/(x-200));
+			var angleY = Math.atan((x-200)/(y-200))
+			
+		})
+		
+		function rotateX(){
+		}
+		window.onload = function(){
+			init();
+			rotateX();
+		}
+	})()
+	</script>
+</body>
+</html>
