@@ -3,14 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<title>折柱图</title>
-	<script type="text/javascript" src="js/echarts.js"></script> 
+	<script src="http://cdn.bootcss.com/echarts/3.4.0/echarts.js"></script> 
 </head>
 <body>
 	<div id="container">
 		<div id="chart" style="width:500px;height:300px;"></div>
 	</div>
-</body>
-<script type="text/javascript">
+	<script type="text/javascript">
 	var mychart = echarts.init(document.getElementById("chart"));
 	var option = {
 		title:{
@@ -72,4 +71,6 @@
 	};
 	mychart.setOption(option);
 </script>
+</body>
+
 </html>
